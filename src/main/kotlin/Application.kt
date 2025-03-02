@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     val repository = FakeTaskRepository()
+    configureSockets()
     configureSerialization()
     routing {
         singlePageApplication {

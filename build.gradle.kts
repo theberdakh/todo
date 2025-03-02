@@ -15,11 +15,18 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"// Change this too
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation(libs.ktor.server.websocket)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.serialization.kotlinx.json)
